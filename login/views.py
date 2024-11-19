@@ -7,6 +7,7 @@ def login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         
+        # Log para depuração
         print("Username:", username)  
         print("Password:", password)
 
@@ -14,11 +15,11 @@ def login(request):
         
         if user is not None:
             auth_login(request, user)
-            messages.success(request, 'Login realizado com sucesso')
+            print("Login efetuado com sucesso")
             return redirect('home')
         else:
-            print("Usuário não autenticado.")
-            messages.error(request, 'Login ou senha inválidos. Verifique e tente novamente')
+            messages.error(request, 'Usuário ou senha inválidos. Verifique e tente novamente.')
     
     return render(request, 'login.html')
+
 

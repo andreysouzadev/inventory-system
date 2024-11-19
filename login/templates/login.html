@@ -1,7 +1,20 @@
 {% extends "base.html" %}
+{% load static %}
+
 
 {% block content %}
-<div class="flex justify-center items-center py-8">
+<div class="relative flex justify-center items-center py-8">
+    <!-- Bloco para exibir mensagens -->
+    <div class="absolute top-1 right-5" id="messages-container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="bg-red-500 text-white px-4 py-3 rounded shadow-md mb-2 message">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 class="text-xl font-bold mb-6 text-center">Bem-vindo de volta</h2>
         <form method="post" action="/login/" class="grid grid-cols-1 gap-4">
@@ -42,4 +55,9 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+<!-- Incluindo o script para remover mensagens -->
+{% block extra_js %}
+<script src="{% static 'javascript/main.js' %}"></script>
 {% endblock %}

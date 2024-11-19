@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+{% now "Y" as year %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Inventário IMCNet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.5/dist/cdn.min.js" defer></script>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal flex flex-col min-h-screen">
+
+    <!-- Cabeçalho -->
+    <header class="bg-blue-800 p-4 text-white text-center">
+        <h1 class="text-2xl font-semibold">Sistema de Inventário IMCNet</h1>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-grow py-6">
+        <div class="container mx-auto">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 p-4 text-white text-center mt-auto">
+        <p>&copy; 2024 IMCNet. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="{% static 'javascript/main.js' %}"></script>
+
+</body>
+</html>
+

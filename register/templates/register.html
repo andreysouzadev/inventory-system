@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="flex justify-center items-center py-5 relative">
+    <!-- Bloco para exibir mensagens gerais no topo -->
+    <div class="absolute top-5 right-5" id="messages-container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="bg-red-500 text-white px-4 py-3 rounded shadow-md mb-2 message">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <!-- Formulário de Cadastro -->
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-4xl">
+        <h2 class="text-xl font-bold mb-6 text-center">Cadastre-se</h2>
+        <form method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6" novalidate>
+            {% csrf_token %}
+
+            <!-- Nome Completo -->
+            <div>
+                <label for="nome_completo" class="block text-gray-700 font-semibold mb-2">Nome Completo</label>
+                <input type="text" id="nome_completo" name="nome_completo" placeholder="Nome Completo"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                {% if form.errors.nome_completo %}
+                    <p class="text-red-500 text-sm mt-1">{{ form.errors.nome_completo.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- E-mail -->
+            <div>
+                <label for="username" class="block text-gray-700 font-semibold mb-2">E-mail</label>
+                <input type="email" id="username" name="username" placeholder="E-mail"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                {% if form.errors.username %}
+                    <p class="text-red-500 text-sm mt-1">{{ form.errors.username.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Telefone -->
+            <div>
+                <label for="telefone" class="block text-gray-700 font-semibold mb-2">Telefone</label>
+                <input type="text" id="telefone" name="telefone" placeholder="Telefone"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                {% if form.errors.telefone %}
+                    <p class="text-red-500 text-sm mt-1">{{ form.errors.telefone.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Função -->
+            <div>
+                <label for="funcao" class="block text-gray-700 font-semibold mb-2">Função</label>
+                <select id="funcao" name="funcao"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="" disabled selected>Selecione sua função</option>
+                    <option value="analista-noc">Analista NOC</option>
+                    <option value="analista-soc">Analista SOC</option>
+                    <option value="especialistas">Especialistas</option>
+                </select>
+                {% if form.errors.funcao %}
+                    <p class="text-red-500 text-sm mt-1">{{ form.errors.funcao.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Senha -->
+            <div>
+                <label for="senha" class="block text-gray-700 font-semibold mb-2">Senha</label>
+                <input type="password" id="password" name="password" placeholder="Senha"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                {% if form.errors.password %}
+                    <p class="text-red-500 text-sm mt-1">{{ form.errors.password.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Confirmar Senha -->
+            <div>
+                <label for="confirmar_senha" class="block text-gray-700 font-semibold mb-2">Confirme sua Senha</label>
+                <input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Confirme sua senha"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                {% if form.errors.confirmar_senha %}
+                    <p class="text-red-500 text-sm mt-1">{{ form.errors.confirmar_senha.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Botão -->
+            <div class="col-span-2 flex justify-center">
+                <button type="submit"
+                    class="bg-blue-800 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition font-semibold">
+                    Cadastrar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

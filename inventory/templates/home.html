@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto p-6">
+    
+    <!-- Botão de Adicionar -->
+    <div class="flex justify-center mb-6" x-data="{ open: false }">
+        <button @click="open = true" class="bg-blue-800 text-white px-4 py-2 rounded hover:bg-blue-600">Adicionar Dispositivo</button>
+        
+        <!-- Modal de Adição de Dispositivo -->
+    <div x-show="open" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+    <form method="POST" action="{% url 'home' %}" class="bg-white p-8 rounded-lg w-full max-w-md relative shadow-lg space-y-6">
+        {% csrf_token %}
+
+        <!-- Botão Fechar -->
+        <button @click="open = false" type="button" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+        <!-- Cabeçalho do Modal -->
+        <h2 class="text-2xl font-semibold text-center text-blue-800 border-b pb-3">Adicionar Novo Dispositivo</h2>
+
+        <!-- Campo para Nome do Dispositivo -->
+        <div class="space-y-1">
+            <label for="device_name" class="block text-gray-700 font-medium">Nome do dispositivo</label>
+            <input type="text" id="device_name" name="device_name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 h-12 px-4" placeholder="Insira o nome do dispositivo" required>
+        </div>
+
+        <!-- Select para Categoria -->
+        <div class="space-y-1">
+            <label for="category" class="block text-gray-700 font-medium">Categoria</label>
+            <select id="category" name="category" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 h-12 px-4">
+                {% for categoria in categorias %}
+                <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Botão para Incluir Dispositivo -->
+        <div class="flex justify-center mt-4">
+            <button type="submit" class="bg-blue-600 text-white font-semibold px-8 py-3 rounded-md hover:bg-blue-700 transition duration-150 ease-in-out shadow-md">
+                Incluir Dispositivo
+            </button>
+        </div>
+    </form>
+</div>
+
+    </div>
+
+    <!-- Seções de Inventário -->
+    <div class="grid grid-cols-3 gap-6">
+        {% for categoria in categorias %}
+        <div class="bg-white shadow-lg rounded-lg p-4">
+            <h2 class="text-xl font-semibold mb-4 text-center">{{ categoria.nome }}</h2>
+            <ul>
+                {% for dispositivo in categoria.dispositivos.all %}
+                <li class="flex justify-between items-center border-b py-2">
+                    <span>{{ dispositivo.nome }}</span>
+                    <a href="{% url 'remover_dispositivo' dispositivo.id %}" 
+                    class="text-red-500 hover:text-red-700 font-bold border border-red-500 rounded-lg w-6 h-6 flex items-center justify-center transform hover:scale-110 transition-transform duration-200 z-10">
+                    X
+                 </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

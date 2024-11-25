@@ -35,7 +35,10 @@
                         class="absolute right-0 mt-2 bg-white text-black rounded shadow-lg py-2 w-48 z-50"
                     >
                         <a href="/minha-conta/" class="block px-4 py-2 hover:bg-gray-100">Minha Conta</a>
-                        <a href="/logout/" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                            {% csrf_token %}
+                        </form>
                     </div>
                 </div>
             {% else %}

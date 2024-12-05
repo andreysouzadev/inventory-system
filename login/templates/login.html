@@ -7,11 +7,11 @@
     <!-- Bloco para exibir mensagens -->
     <div class="absolute top-1 right-5" id="messages-container">
         {% if messages %}
-            {% for message in messages %}
-                <div class="bg-red-500 text-white px-4 py-3 rounded shadow-md mb-2 message">
-                    {{ message }}
-                </div>
-            {% endfor %}
+        {% for message in messages %}
+        <div class="bg-red-500 text-white px-4 py-3 rounded shadow-md mb-2 message">
+            {{ message }}
+        </div>
+        {% endfor %}
         {% endif %}
     </div>
 
@@ -49,7 +49,7 @@
 
         <!-- Link para Cadastro -->
         <div class="mt-6 text-center">
-            <p class="text-gray-700">Não tem uma conta? 
+            <p class="text-gray-700">Não tem uma conta?
                 <a href="/register/" class="text-blue-800 hover:underline">Cadastre-se</a>
             </p>
         </div>

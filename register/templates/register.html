@@ -6,11 +6,11 @@
     <!-- Bloco para exibir mensagens gerais no topo -->
     <div class="absolute top-5 right-5" id="messages-container">
         {% if messages %}
-            {% for message in messages %}
-                <div class="bg-red-500 text-white px-4 py-3 rounded shadow-md mb-2 message">
-                    {{ message }}
-                </div>
-            {% endfor %}
+        {% for message in messages %}
+        <div class="bg-red-500 text-white px-4 py-3 rounded shadow-md mb-2 message">
+            {{ message }}
+        </div>
+        {% endfor %}
         {% endif %}
     </div>
 
@@ -26,7 +26,7 @@
                 <input type="text" id="nome_completo" name="nome_completo" placeholder="Nome Completo"
                     class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 {% if form.errors.nome_completo %}
-                    <p class="text-red-500 text-sm mt-1">{{ form.errors.nome_completo.0 }}</p>
+                <p class="text-red-500 text-sm mt-1">{{ form.errors.nome_completo.0 }}</p>
                 {% endif %}
             </div>
 
@@ -36,7 +36,7 @@
                 <input type="email" id="username" name="username" placeholder="E-mail"
                     class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 {% if form.errors.username %}
-                    <p class="text-red-500 text-sm mt-1">{{ form.errors.username.0 }}</p>
+                <p class="text-red-500 text-sm mt-1">{{ form.errors.username.0 }}</p>
                 {% endif %}
             </div>
 
@@ -46,7 +46,7 @@
                 <input type="text" id="telefone" name="telefone" placeholder="Telefone"
                     class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 {% if form.errors.telefone %}
-                    <p class="text-red-500 text-sm mt-1">{{ form.errors.telefone.0 }}</p>
+                <p class="text-red-500 text-sm mt-1">{{ form.errors.telefone.0 }}</p>
                 {% endif %}
             </div>
 
@@ -61,7 +61,7 @@
                     <option value="especialistas">Especialistas</option>
                 </select>
                 {% if form.errors.funcao %}
-                    <p class="text-red-500 text-sm mt-1">{{ form.errors.funcao.0 }}</p>
+                <p class="text-red-500 text-sm mt-1">{{ form.errors.funcao.0 }}</p>
                 {% endif %}
             </div>
 
@@ -71,7 +71,7 @@
                 <input type="password" id="password" name="password" placeholder="Senha"
                     class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 {% if form.errors.password %}
-                    <p class="text-red-500 text-sm mt-1">{{ form.errors.password.0 }}</p>
+                <p class="text-red-500 text-sm mt-1">{{ form.errors.password.0 }}</p>
                 {% endif %}
             </div>
 
@@ -81,7 +81,7 @@
                 <input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Confirme sua senha"
                     class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 {% if form.errors.confirmar_senha %}
-                    <p class="text-red-500 text-sm mt-1">{{ form.errors.confirmar_senha.0 }}</p>
+                <p class="text-red-500 text-sm mt-1">{{ form.errors.confirmar_senha.0 }}</p>
                 {% endif %}
             </div>
 

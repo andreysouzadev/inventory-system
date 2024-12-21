@@ -8,19 +8,18 @@
     <title>Sistema de Inventário IMCNet</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.5/dist/cdn.min.js" defer></script>
-    <!-- Link do Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 font-sans leading-normal tracking-normal flex flex-col min-h-screen">
 
-    <!-- Cabeçalho -->
+
     <header class="bg-blue-800 p-4 text-white">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-semibold">Sistema de Inventário IMCNet</h1>
-            <!-- Verificar se o usuário está logado -->
+
             {% if user.is_authenticated %}
                 <div class="relative" x-data="{ open: false }">
-                    <!-- Ícone de perfil -->
+
                     <button @click="open = !open" class="focus:outline-none flex items-center space-x-2">
                         <span class="font-medium">
                             {{ user.userprofile.nome_completo|default:"Usuário" }}
@@ -28,7 +27,6 @@
                         <i class="fas fa-user-circle text-2xl"></i>
                     </button>
 
-                    <!-- Dropdown -->
                     <div
                         x-show="open"
                         @click.away="open = false"
